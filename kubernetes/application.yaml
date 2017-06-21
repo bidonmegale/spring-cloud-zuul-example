@@ -7,7 +7,7 @@ spec:
   - name: abacate
     protocol: TCP
     port: 8761
-    targetPort: 80
+    targetPort: 8761
     nodePort: 31852
   selector:
     name: abacate
@@ -30,7 +30,7 @@ spec:
     spec:
       containers:
       - name: abacate
-        image: localhost:5000/eurika-machine:latest
+        image: bidonmegale/eukica-machine
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8761
