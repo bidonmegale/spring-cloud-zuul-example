@@ -1,0 +1,5 @@
+sudo docker tag eurika-machine localhost:5000/eurika-machine
+sudo docker push localhost:5000/eurika-machine
+
+
+docker run localhost:5000/eurika-machine

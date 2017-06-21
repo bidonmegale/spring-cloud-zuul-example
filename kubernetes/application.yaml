@@ -1,36 +1,36 @@
 apiVersion: v1
 kind: Service
 metadata:
- name: eurikaserver
+ name: abacate
 spec:
   ports:
-  - name: eurikaserver
+  - name: abacate
     protocol: TCP
     port: 8761
     targetPort: 80
-    nodePort: 31854
+    nodePort: 31852
   selector:
-    name: eurikaserver
+    name: abacate
     tier: backend
-    app: eurikaserver
+    app: abacate
   type: LoadBalancer
 ---
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
-  name: eurikaserver
+  name: abacate
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        app: eurikaserver
+        app: abacate 
         tier: backend
-        name: eurikaserver
+        name: abacate
     spec:
       containers:
-      - name: eurikaserver
-        image: eurika-machine
+      - name: abacate
+        image: localhost:5000/eurika-machine:latest
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8761
