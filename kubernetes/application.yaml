@@ -1,0 +1,38 @@
+apiVersion: v1
+kind: Service
+metadata:
+ name: eurikaserver
+spec:
+  ports:
+  - name: eurikaserver
+    protocol: TCP
+    port: 8761
+    targetPort: 80
+    nodePort: 31854
+  selector:
+    name: eurikaserver
+    tier: backend
+    app: eurikaserver
+  type: LoadBalancer
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: eurikaserver
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: eurikaserver
+        tier: backend
+        name: eurikaserver
+    spec:
+      containers:
+      - name: eurikaserver
+        image: eurika-machine
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8761
+
+
